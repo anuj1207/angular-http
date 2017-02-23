@@ -1,0 +1,17 @@
+<div>
+  <form [formGroup]="addForm">
+    <input type="text" placeholder="Enter Date" formControlName="date" [(ngModel)]="task.date" name="date" #taskDate/>
+    <input type="text" placeholder="Enter Title" formControlName="title" [(ngModel)]="task.title" name="title" #taskTitle/>
+    <input type="text" placeholder="Enter Description" formControlName="description" [(ngModel)]="task.description" name="description" #taskDescription/>
+
+    <label for="priority">Priority</label>
+    <select name="Priority" formControlName="priority" id="priority" [(ngModel)]="task.priority" name="priority" #taskPriority>
+      <option value="low" >Low</option>
+      <option value="medium">Medium</option>
+      <option value="high">High</option>
+    </select>
+    <br>
+    <br>
+    <button type="submit" (click)="addTask()"><span><i class="fa fa-user-plus" aria-hidden="true"></i></span> Submit </button>
+  </form>
+</div>
