@@ -12,6 +12,7 @@ import {Http, Headers} from "@angular/http";
 export class AppService{
 
   tasks:Task[] = [{
+    _id: '',
     date: '',
     title: '',
     description: '',

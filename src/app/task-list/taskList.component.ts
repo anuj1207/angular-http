@@ -4,8 +4,9 @@ import {Task} from "../task";
 import {Router} from "@angular/router";
 
 @Component({
+  moduleId:module.id,
   selector: 'taskList',
-  templateUrl: './app/task-list/taskList.component.html',
+  templateUrl: './taskList.component.html',
   styleUrls: [''],
 })
 
@@ -17,17 +18,22 @@ export class TaskListComponent implements OnInit{
     this.service.showTask().subscribe(data=>{
       this.tasks=data;
     }, error=>{
-      alert(error);
+      console.error(error);
     });
   }
 
   deleteTask(i:string){
     this.service.deleteTask(i).subscribe(data=>{
       alert("Data deleted successfully"+data);
+      this.tasks=data;
     }, error=>{
       alert(error);
     });
-    location.reload();
+    this.service.showTask().subscribe(data=>{
+      this.tasks=data;
+    }, error=>{
+      alert(error);
+    });
   }
 
   goToUpdate(index :string) {

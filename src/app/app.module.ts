@@ -6,9 +6,9 @@ import {AppService} from "./app.singletonService";
 import {RouterModule} from "@angular/router";
 import {routes} from "./app.routes";
 import {HomeComponent} from "./home/home.component";
-import {UpdateComponent} from "./update-task/updateTask.component";
+import {UpdateComponent} from "./create-and-update-task/updateTask.component";
 import {TaskListComponent} from "./task-list/taskList.component";
-import {CreateTaskComponent} from "./create-task/createTask.component";
+import { CreateTaskComponent} from "./create-and-update-task/createTask.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {HttpModule} from "@angular/http"
