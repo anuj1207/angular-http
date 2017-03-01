@@ -27,12 +27,12 @@ export class TaskListComponent implements OnInit{
       alert("Data deleted successfully"+data);
       this.tasks=data;
     }, error=>{
-      alert(error);
+      console.error(error);
     });
     this.service.showTask().subscribe(data=>{
       this.tasks=data;
     }, error=>{
-      alert(error);
+      console.error(error);
     });
   }
 

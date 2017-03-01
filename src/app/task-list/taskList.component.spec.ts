@@ -66,6 +66,15 @@ describe('TaskListComponent', function () {
     }])
   });
 
+  it('be able to show error on show method', () => {
+    spyOn(service, 'showTask').and.returnValue(
+        Observable.throw(new Error("hello i m error"))
+    );
+    spyOn(console, 'error');
+    comp.ngOnInit();
+    expect(console.error).toHaveBeenCalled();
+  });
+
   it('be able to delete data from DB', () => {
     spyOn(service, 'deleteTask').and.returnValue(
       Observable.of<any>(
@@ -87,6 +96,15 @@ describe('TaskListComponent', function () {
       description : '',
       priority : ''
     }])
+  });
+
+  it('be able to show error on deleteTask method', () => {
+    spyOn(service, 'deleteTask').and.returnValue(
+      Observable.throw(new Error("hello i m error"))
+    );
+    spyOn(console, 'error');
+    comp.deleteTask("");
+    expect(console.error).toHaveBeenCalled();
   });
 
   it('be able to navigate to update component', () => {

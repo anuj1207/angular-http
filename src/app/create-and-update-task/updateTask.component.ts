@@ -30,11 +30,11 @@ export class UpdateComponent implements OnInit{
         this.task = this.tasks.filter(x=>x._id==this.index)[0];
         console.log(this.task);
       },error=>{
-          alert(error);
+          console.error(error);
         });
 
     }, error=>{
-      alert(error);
+      console.error(error);
     });
 
   }
@@ -46,7 +46,7 @@ export class UpdateComponent implements OnInit{
           alert("data added successfully"+data);
           this.router.navigate(['taskList']);
         },error=>{
-          alert(error);
+          console.error(error);
         });
 
   }

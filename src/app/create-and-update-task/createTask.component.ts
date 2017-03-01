@@ -43,7 +43,7 @@ export class CreateTaskComponent implements OnInit{
           alert("data added successfully"+data);
           this.router.navigate(['taskList']);
         },error=>{
-          alert(error);
+          console.error(error);
         });
   }
 

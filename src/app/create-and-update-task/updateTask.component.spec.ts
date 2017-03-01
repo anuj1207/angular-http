@@ -48,6 +48,40 @@ describe('UpdateComponent', function () {
     router = fixture.debugElement.injector.get(Router)
   });
 
+  it('be able to show data on modify page', () => {
+    spyOn(service, 'showTask').and.returnValue(
+      Observable.of<any>(
+        [{
+          _id: '',
+          date: '',
+          title: '',
+          description : '',
+          priority : ''
+        }]
+      )
+    );
+    spyOn(console, 'log');
+    comp.ngOnInit();
+    expect(console.log).toHaveBeenCalled();
+    expect(comp.tasks).toEqual([{
+      _id: '',
+      date: '',
+      title: '',
+      description : '',
+      priority : ''
+    }])
+
+  });
+
+  it('be able to show error on loading the modify form', () => {
+    spyOn(service, 'showTask').and.returnValue(
+      Observable.throw(new Error("hello i m error"))
+    );
+    spyOn(console, 'error');
+    comp.ngOnInit();
+    expect(console.error).toHaveBeenCalled();
+  });
+
   it('be able to update data to DB', () => {
     spyOn(service, 'updateTask').and.returnValue(
       Observable.of<any>(
@@ -74,6 +108,15 @@ describe('UpdateComponent', function () {
     router.navigate([]).then(data=>{
       expect(data).toBe(true);
     })
+  });
+
+  it('be able to show error on updating data on DB', () => {
+    spyOn(service, 'updateTask').and.returnValue(
+      Observable.throw(new Error("hello i m error"))
+    );
+    spyOn(console, 'error');
+    comp.addTask();
+    expect(console.error).toHaveBeenCalled();
   });
 
 });

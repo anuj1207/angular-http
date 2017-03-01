@@ -70,4 +70,13 @@ describe('CreateTaskComponent', function () {
     })
   });
 
+  it('be able to show error on adding the data to DB', () => {
+    spyOn(service, 'addTask').and.returnValue(
+      Observable.throw(new Error("hello i m error"))
+    );
+    spyOn(console, 'error');
+    comp.addTask();
+    expect(console.error).toHaveBeenCalled();
+  });
+
 });
